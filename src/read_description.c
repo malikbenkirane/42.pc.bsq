@@ -6,7 +6,7 @@
 ** updates *number* with the integer representation of *str*
 */
 
-short			readpint(char *str, int *number)
+short			readpint(char *str, unsigned int *number)
 {
 	short		length;
 

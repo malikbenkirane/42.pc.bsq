@@ -15,7 +15,8 @@ typedef	struct		s_grid
 
 typedef	struct		s_grid_desc
 {
-	int				nline;
+	unsigned int	nline;
+	unsigned int	ncol;
 	char			empty_c;
 	char			trap_c;
 	char			fill_c;
