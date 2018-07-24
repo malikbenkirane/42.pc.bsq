@@ -46,6 +46,7 @@ t_grid_desc		*read_description(int fildes)
 		return (NULL);
 	if (!(number_length = readpint(buf, &(grid_desc->nline))))
 		return (NULL);
+	grid_desc->ncol = 0;
 	if (number_length + 3 != total_length)
 		return (NULL);
 	return (grid_desc);
