@@ -8,21 +8,21 @@
 
 typedef	struct			s_grid_line
 {
-	unsigned int		*grid_line;
+	t_dyn_int			*grid_line;
 	struct s_grid_chain	*next_line;
 }						t_grid_line;
 
 typedef	struct			s_grid
 {
 	t_grid_line			*first_line;
-	unsigned int		width;
-	unsigned int		height;
+	t_dyn_int			width;
+	t_dyn_int			height;
 }						t_grid;
 
 typedef	struct			s_grid_desc
 {
-	unsigned int		nline;
-	unsigned int		ncol;
+	t_dyn_int			nline;
+	t_dyn_int			ncol;
 	char				empty_c;
 	char				trap_c;
 	char				fill_c;

@@ -6,6 +6,7 @@
 # define TRUE 1
 # define FALSE 0
 
-typedef short	t_bool;
+typedef short			t_bool;
+typedef unsigned int	t_dyn_int;
 
 #endif 
