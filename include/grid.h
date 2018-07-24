@@ -25,5 +25,6 @@ typedef	struct		s_grid_desc
 t_grid 				*read_map(int fildes);
 t_grid_desc			*read_description(int fildes);
 char				*is_valid_description(short *length, int fildes);
+char    			*is_valid_map(int fildes);
 
 #endif
