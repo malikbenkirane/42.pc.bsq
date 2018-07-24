@@ -27,6 +27,28 @@ short			readpint(char *str, t_dyn_int *number)
 	return (length);
 }
 
+char			*is_valid_description(short *length, int fildes)
+{
+	char	*buf;
+	short	n;
+
+	if ((buf = (char *)malloc(sizeof(char) * (DESC_MAX_LEN + 1))) == NULL)
+		return (NULL);
+	if (read(fildes, buf, 1) <= 0)
+		return (NULL);
+	if (!ISNUMBER(*buf))
+		return (NULL);
+	n = 1;
+	while (n < DESC_MAX_LEN &&
+			read(fildes, buf + n, 1) == 1 &&
+			!ISNEWLINE(buf[n]))
+		n++;
+	if (!ISNEWLINE(buf[n]))
+		return (NULL);
+	*length = n;
+	return (buf);
+}
+
 t_grid_desc		*read_description(int fildes)
 {
 	t_grid_desc	*grid_desc;
@@ -50,26 +72,4 @@ t_grid_desc		*read_description(int fildes)
 	if (number_length + 3 != total_length)
 		return (NULL);
 	return (grid_desc);
-}
-
-char			*is_valid_description(short *length, int fildes)
-{	
-	char	*buf;
-	short	n;
-
-	if ((buf = (char *)malloc(sizeof(char) * (DESC_MAX_LEN + 1))) == NULL)
-		return (NULL);
-	if (read(fildes, buf, 1) <= 0) 
-		return (NULL);
-	if (!ISNUMBER(*buf))
-		return (NULL);
-	n = 1;
-	while (n < DESC_MAX_LEN &&
-			read(fildes, buf + n, 1) == 1 &&
-			!ISNEWLINE(buf[n]))
-		n++;
-	if (!ISNEWLINE(buf[n]))
-		return (NULL);
-	*length = n;
-	return (buf);
 }
