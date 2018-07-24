@@ -1,3 +1,5 @@
+#include <stdlib.h>
+#include "ft.h"
 #include "error.h"
 
 void	exit_with_map_error()
