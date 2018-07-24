@@ -1,10 +1,13 @@
 #include <stdlib.h>
+#include "grid.h"
+#include "read.h"
+#include "free.h"
 
 void		*free_objects(char *str, t_grid_line *line, t_read_cue *r_cue)
 {
+	free(str);
 	free_list(line);
 	free(r_cue);
-	free(str);
 	return (NULL);
 }
 
