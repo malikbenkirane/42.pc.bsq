@@ -15,9 +15,9 @@ e..g `9.ox`
 ```
 bsq [<file> [<file> ...]]
 ```
+* lis `stdin` lorsqu'il n'y a pas d'argument
 * solution suivi de `\n` si solution
 * `map error` suivi de `\n` si map invalide
-* lis `stdin` lorsqu'il n'y a pas d'argument
 * lorsqu'il y a plusieurs solution, choisir la solution en haut a gauche
 
 **compile**
