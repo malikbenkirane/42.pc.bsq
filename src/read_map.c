@@ -62,7 +62,7 @@ t_grid 			*read_map(int fildes)
 	return (NULL);
 }
 
-char			*read_file(int fildes)
+char			*read_file(int fildes, t_grid *grid)
 {
 	char		*buf;
 	int			size;
@@ -72,39 +72,19 @@ char			*read_file(int fildes)
 	if (!(buf = (char*)malloc(sizeof(*buf) * BUFFER_SIZE + 1)))
 		return (NULL)
 	total_size = 0;
-	size = read(fildes, buf, BUFFER_SIZE);
-	while (!iseol(buf))
-	{
-		size = read(fildes, buf, BUFFER_SIZE);
-		buf[size] = '\0';
-		str = ft_realloc(str, buf);
-	}
-	read_map_first_line(&str, grid_desc);
 	while ((size = read(fildes, buf, BUFFER_SIZE)))
 	{
-		total_size += size;
-		buf[size] = '\0';
-		str = ft_realloc(str, buf);
+		while (size > 0 && !iseol(buf))
+		{
+			size = read(fildes, buf, BUFFER_SIZE);
+			buf[size] = '\0';
+			str = ft_realloc(str, buf);
+		}
+		if (size == 0 && !iseol(buf))
+			return (NULL);
+		if (!read_map_first_line(&str, grid_desc, grid))
+			return (NULL);
 	}
 	(*str)[total_size] = '\0';
 	return (str);
-}
-/*
-** read_map_first_line(t_grid_desc *, 
-*/
-
-int		read_map(char *path, char **str)
-{
-	int		total_size;
-	int		fildes;
-
-	if (!path)
-		fildes = 0;
-	/* TODO
-	** check main
-	else if ((fildes = open(path, O_RDONLY)) == -1)
-		return (0);
-	*/
-	free(buf);
-	return (1);
 }
