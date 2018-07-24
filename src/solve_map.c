@@ -22,10 +22,10 @@ void		solve_bsq(
 
 	i = 1;
 	j = 1;
-	while (i != grid->ncol - 1 && j != grid->nline)
+	while (i < grid->ncol && j <= grid->nline)
 	{
 		i = 1;
-		while (i != grid->ncol - 1)
+		while (i < grid->ncol)
 		{
 			size = get_min(grid, i, j);
 			set_opt_size(grid, i, j, size);
@@ -35,15 +35,14 @@ void		solve_bsq(
 	}
 }
 
-t_dyn_int	get_min(t_grid grid, t_dyn_int i, t_dyn_int j)
+t_dyn_int	get_min(t_grid *grid, t_dyn_int i, t_dyn_int j)
 {
 	t_dyn_int	left;
-	t_dyn_int	top;
-	t_dyn_int	corner;
+	t_dyn_int	above;
+	t_dyn_int	diag;
 
-	left = get_opti_square(grid, i - 1, j);
-	top = get_opti_square(grid, i, j - 1);
-	corner = get_opti_square(grid, i - 1, j - 1);
-	return (MIN_3(left, top, corner));
-
+	left = get_opt_square(grid, i - 1, j);
+	above = get_opt_square(grid, i, j - 1);
+	diag = get_opt_square(grid, i - 1, j - 1);
+	return (MIN_3(left, above, diag));
 }
