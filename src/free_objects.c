@@ -1,8 +1,9 @@
 #include <stdlib.h>
 
-void		*free_objects(char *str, t_grid_line *line)
+void		*free_objects(char *str, t_grid_line *line, t_read_cue *r_cue)
 {
 	free_list(line);
+	free(r_cue);
 	free(str);
 	return (NULL);
 }
