@@ -1,12 +1,6 @@
 #include "constants.h"
 #include "read.h"
 
-/*
-** 1111111111111011111111
-** 1111111111111111111111
-** 1
-*/
-
 t_bool			iseol(char *str)
 {
 	while (*str && *str != '\n')
