@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   grid.h                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrizac <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/25 20:11:53 by mtrizac           #+#    #+#             */
+/*   Updated: 2018/07/25 20:12:18 by mtrizac          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef GRID_H
 # define GRID_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include "constants.h"
-#include "macros.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include "constants.h"
+# include "macros.h"
 
 typedef	struct			s_grid_line
 {
@@ -27,5 +39,4 @@ typedef	struct			s_grid_desc
 	char				trap_c;
 	char				fill_c;
 }						t_grid_desc;
-
 #endif
