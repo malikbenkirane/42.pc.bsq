@@ -1,16 +1,33 @@
 #include "grid_lines.h"
 
-void		solve_map(t_grid *grid, char *map_str)
+void		solve_map(t_grid *grid, char *map_str, t_grid_desc *grid_desc)
 {
 	t_bsq_solution	*solution;
+	int 			offset;
+	int 			counter;
+	char			*ptr;
 
-	solution = solve_bsq(grid, 
+	solution = solve_bsq(grid);
+	counter = 0;
+	ptr = map_str + solution->argopt;
+	while (counter < solution->opt)
+	{
+		offset = 0;
+		while (offset > -(solution->opt))
+		{
+			ptr[offset] = grid_desc->fill_c;
+			offset--;
+		}
+		ptr = ptr - grid_desc->ncol;
+		counter ++;
+	}
 }
 
-t_bsq_solution	*solve_bsq(t_grid *grid, t_dyn_int *size)
+t_bsq_solution	*solve_bsq(t_grid *grid)
 {
-	t_dyn_int i;
-	t_dyn_int j;
+	t_dyn_int 		i;
+	t_dyn_int 		j;
+	t_dyn_int 		*size;
 	t_bsq_solution	*solution;
 
 	i = 1;
