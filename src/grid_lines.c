@@ -24,3 +24,15 @@ t_grid_line		*init_grid_line()
 	grid_line = (t_grid_line *)malloc(sizeof(t_grid_line));
 	return (grid_line);
 }
+
+/*
+** TODO implement get_opt_size
+** TODO implement set_opt_size
+*/
+t_dyn_int	get_opt_size(
+		t_grid *grid,
+		t_dyn_int posx, t_dyn_int posy);
+
+void		set_opt_size(
+		t_grid *grid,
+		t_dyn_int posx, t_dyn_int posy, t_dyn_int val);
