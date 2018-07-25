@@ -24,36 +24,32 @@ t_grid_line		*init_grid_line()
 	return (grid_line);
 }
 
-t_grid_line	get_opt_line(t_dyn_int posy)
+t_dyn_int	*get_opt_line(t_grid *grid, t_dyn_int posy)
 {
-	  t_grid_line opt_line;
+	  t_grid_line	*opt_line;
 
 	  opt_line = grid->first_line;
 	  while (posy-- && opt_line)
-		  opt_line = opt_line->next;
+		  opt_line = opt_line->next_line;
 	  if (opt_line && opt_line->grid_line)
-		  return (opt_line->grid_lines);
+		  return (opt_line->grid_line);
 	  return (NULL);
 }
 
-t_dyn_int	get_opt_size(
-		t_grid *grid,
-		t_dyn_int posx, t_dyn_int posy)
+t_dyn_int	get_opt_size(t_grid *grid, t_dyn_int posx, t_dyn_int posy)
 {
-	t_grid_line opt_line;
+	t_dyn_int	*opt_line;
 
-	if ((opt_line = get_opt_line(posy)) == NULL)
+	if ((opt_line = get_opt_line(grid, posy)) == NULL)
 		return (0);
-	return (opt_line[posy]);
+	return (opt_line[posx]);
 }
 
-void		set_opt_size(
-		t_grid *grid,
-		t_dyn_int posx, t_dyn_int posy, t_dyn_int val)
+void		set_opt_size(t_grid *grid, t_dyn_int posx, t_dyn_int posy, t_dyn_int val)
 {
-	t_grid_line	opt_line;
+	t_dyn_int	*opt_line;
 
-	if ((opt_line = get_opt_line(posy)) == NULL)
+	if ((opt_line = get_opt_line(grid, posy)) == NULL)
 		return ;
-	opt_line[posy] = val;
+	opt_line[posx] = val;
 }
