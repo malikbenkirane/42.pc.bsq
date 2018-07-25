@@ -7,7 +7,8 @@ typedef struct	s_bsq_solution
 	t_dyn_int	argopt;
 }				t_bsq_solution;
 
-t_bsq_solution	*solve_bsq(t_grid *grid, t_dyn_int *size);
+t_bsq_solution	*solve_bsq(t_grid *grid);
+void			solve_map(t_grid *grid, char *map_str, t_grid_desc *grid_desc);
 
 t_dyn_int		get_min(t_grid *grid, t_dyn_int i, t_dyn_int j);
 t_bsq_solution	*init_bsq_solution();
