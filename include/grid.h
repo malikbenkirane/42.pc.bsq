@@ -28,7 +28,4 @@ typedef	struct			s_grid_desc
 	char				fill_c;
 }						t_grid_desc;
 
-char					*ft_realloc(char *current, char *to_add);
-t_grid_desc				*read_description(int fildes);
-
 #endif

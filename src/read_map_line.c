@@ -24,7 +24,7 @@ t_bool			read_map_line(char **str,
 	len = 0;
 	while(*cur && *cur != '\n')
 	{
-		if (*cur != grid_desc->empty_c || *cur != grid_desc->trap_c)
+		if (*cur != grid_desc->empty_c && *cur != grid_desc->trap_c)
 			return (FALSE);
 		len++;
 		cur++;
@@ -35,6 +35,7 @@ t_bool			read_map_line(char **str,
 		grid_desc->ncol = len;
 	else if (len != grid_desc->ncol)
 		return (FALSE);
+	line->grid_line = (t_dyn_int *)malloc(sizeof(t_dyn_int) * len);
 	update_grid_line(*str, grid_desc, line);
 	*str = *str + len + 1;
 	return (TRUE);

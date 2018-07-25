@@ -7,7 +7,9 @@ SOURCES			=	src/error.c \
 					src/grid_lines.c \
 					src/read_description.c \
 					src/read_map.c \
-					src/read_map_line.c
+					src/read_map_line.c \
+					src/solve_map.c \
+					src/read_cue.c
 
 OBJECTS			=	$(SOURCES:.c=.o)
 
