@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrizac <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/25 19:56:07 by mtrizac           #+#    #+#             */
+/*   Updated: 2018/07/25 20:00:14 by mtrizac          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <sys/types.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -23,7 +35,8 @@ void		*ft_realloc(t_read_cue *r_cue)
 	** TODO solve possible Seg Fault
 	*/
 	current_len = ft_strlen(r_cue->head);
-	if (!(str = (char*)malloc(sizeof(char) * (current_len + ft_strlen(r_cue->buffer) + 1))))
+	if (!(str = (char*)malloc(sizeof(char) *
+					(current_len + ft_strlen(r_cue->buffer) + 1))))
 		return (NULL);
 	i = -1;
 	while (r_cue->head[++i])
@@ -45,7 +58,8 @@ void		*ft_realloc(t_read_cue *r_cue)
 /*
 ** TODO TESTME t_grid *read_map(int fildes)
 */
-t_read_cue		*read_map(int fildes, t_grid_desc **grid_desc, t_grid **grid)
+
+t_read_cue	*read_map(int fildes, t_grid_desc **grid_desc, t_grid **grid)
 {
 	t_read_cue	*read_cue;
 
@@ -63,7 +77,7 @@ t_read_cue		*read_map(int fildes, t_grid_desc **grid_desc, t_grid **grid)
 	return (read_cue);
 }
 
-t_read_cue		*read_file(int fildes, t_grid_desc *grid_desc, t_grid *grid)
+t_read_cue	*read_file(int fildes, t_grid_desc *grid_desc, t_grid *grid)
 {
 	t_read_cue	*r_cue;
 
@@ -88,8 +102,8 @@ t_read_cue		*read_file(int fildes, t_grid_desc *grid_desc, t_grid *grid)
 	return (r_cue);
 }
 
-
-void 			*read_file_lines(t_grid_desc *grid_desc, t_grid *grid, t_read_cue *r_cue)
+void		*read_file_lines(t_grid_desc *grid_desc, t_grid *grid,
+		t_read_cue *r_cue)
 {
 	int			size;
 
@@ -117,7 +131,7 @@ void 			*read_file_lines(t_grid_desc *grid_desc, t_grid *grid, t_read_cue *r_cue
 	return ((void *)1);
 }
 
-t_dyn_int		map_count_lines(char *tmp)
+t_dyn_int	map_count_lines(char *tmp)
 {
 	t_dyn_int nline;
 

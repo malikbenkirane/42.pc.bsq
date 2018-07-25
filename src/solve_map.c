@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   solve_map.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrizac <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/25 20:02:20 by mtrizac           #+#    #+#             */
+/*   Updated: 2018/07/25 20:04:01 by mtrizac          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "constants.h"
 #include "grid.h"
 #include "solve.h"
@@ -11,7 +23,7 @@ void			solve_map(t_grid *grid, char *map_str, t_grid_desc *grid_desc)
 	char			*ptr;
 
 	/*
-	** TODO look for calls of solve_map 
+	** TODO look for calls of solve_map
 	** (spot unsecure access to grid or grid_access)
 	*/
 	grid->width = grid_desc->ncol;
@@ -35,9 +47,9 @@ void			solve_map(t_grid *grid, char *map_str, t_grid_desc *grid_desc)
 
 t_bsq_solution	*solve_bsq(t_grid *grid)
 {
-	t_dyn_int 		i;
-	t_dyn_int 		j;
-	t_dyn_int 		size;
+	t_dyn_int		i;
+	t_dyn_int		j;
+	t_dyn_int		size;
 	t_bsq_solution	*solution;
 
 	i = 1;
@@ -46,8 +58,8 @@ t_bsq_solution	*solve_bsq(t_grid *grid)
 		return (NULL);
 	while (i < grid->width && j <= grid->height)
 	{
-		i = 1;
-		while (i < grid->width)
+		i = 0;
+		while (++i < grid->width)
 		{
 			size = get_min(grid, i, j);
 			if (size > solution->opt)
@@ -56,7 +68,6 @@ t_bsq_solution	*solve_bsq(t_grid *grid)
 				solution->argopt = j * grid->width + i;
 			}
 			set_opt_size(grid, i, j, size);
-			i++;
 		}
 		j++;
 	}
@@ -75,7 +86,7 @@ t_dyn_int		get_min(t_grid *grid, t_dyn_int i, t_dyn_int j)
 	return (MIN_3(left, above, diag));
 }
 
-t_bsq_solution	*init_bsq_solution()
+t_bsq_solution	*init_bsq_solution(void)
 {
 	t_bsq_solution *solution;
 

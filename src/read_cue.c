@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_cue.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrizac <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/25 19:55:05 by mtrizac           #+#    #+#             */
+/*   Updated: 2018/07/25 19:55:33 by mtrizac          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include <stdlib.h>
 #include "free.h"
 #include "read.h"
 #include "constants.h"
 
-t_read_cue		*init_read_cue()
+t_read_cue		*init_read_cue(void)
 {
 	t_read_cue *r_cue;
 
@@ -19,5 +31,5 @@ t_read_cue		*init_read_cue()
 	}
 	*(r_cue->head) = '\0';
 	r_cue->cline = 0;
-	return r_cue;
+	return (r_cue);
 }

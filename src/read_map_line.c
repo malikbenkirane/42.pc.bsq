@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrizac <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/25 20:00:39 by mtrizac           #+#    #+#             */
+/*   Updated: 2018/07/25 20:02:07 by mtrizac          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "constants.h"
 #include "read.h"
 #include "grid_lines.h"
@@ -14,15 +26,16 @@ t_bool			iseol(char *str)
 /*
 ** TODO TESTME
 */
+
 t_bool			read_map_line(char **str,
 		t_grid_desc *grid_desc, t_grid_line *line)
 {
-	t_dyn_int len;
-	char *cur;
+	t_dyn_int	len;
+	char		*cur;
 
 	cur = *str;
 	len = 0;
-	while(*cur && *cur != '\n')
+	while (*cur && *cur != '\n')
 	{
 		if (*cur != grid_desc->empty_c && *cur != grid_desc->trap_c)
 			return (FALSE);
