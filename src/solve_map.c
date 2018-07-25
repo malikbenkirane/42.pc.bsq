@@ -2,14 +2,12 @@
 
 void		solve_map(t_grid *grid, char *map_str)
 {
-	/*
-	 ** XXX
-	 */
+	t_bsq_solution	*solution;
+
+	solution = solve_bsq(grid, 
 }
 
-t_bsq_solution	*solve_bsq(
-		t_grid *grid,
-		t_dyn_int *size, t_dyn_int *posx, t_dyn_int *posy)
+t_bsq_solution	*solve_bsq(t_grid *grid, t_dyn_int *size)
 {
 	t_dyn_int i;
 	t_dyn_int j;
